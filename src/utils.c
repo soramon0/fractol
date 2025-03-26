@@ -24,4 +24,3 @@ void	exit_msg(int status, char *fmt, ...)
 	}
 	exit(status);
 }
-

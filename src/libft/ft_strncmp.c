@@ -27,3 +27,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	return (c1[i] - c2[i]);
 }
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	len;
+
+	len = ft_strlen(s1);
+	return (len == ft_strlen(s2) && ft_strncmp(s1, s2, len) == 0);
+}

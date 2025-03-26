@@ -40,6 +40,7 @@ char	*ft_strndup(const char *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char *start, char *end, char join);
 char	*ft_strsearch(char *haystack[], char *needle);
