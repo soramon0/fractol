@@ -11,22 +11,18 @@
 /* ************************************************************************** */
 
 #include "src/fractol.h"
-
-void	usage(void)
-{
-	ft_printf_fd(STDERR_FILENO, "usage:\n");
-	ft_printf_fd(STDERR_FILENO, "\t./fractol mandelbrot\n");
-	exit_msg(EXIT_FAILURE, "\t./fractol julia <real> <i>\n");
-}
+#include "include/minilibx/mlx.h"
 
 int	main(int argc, char *argv[])
 {
-	if (argc < 2 || argc > 4)
-		usage();
-	if (argc == 2 && !ft_strcmp(argv[1], "mandelbrot"))
-		usage();
-	if (argc != 4 || !ft_strcmp(argv[1], "julia"))
-		usage();
-	ft_printf("Set selected: %s\n", argv[1]);
+	t_fractol_set	set;
+	void			*mlx_ptr;
+
+	set = parse_selected_set(argc, argv);
+	if (set == SET_UNKNOWN)
+		exit_usage();
+	mlx_ptr = mlx_init();
+	if (mlx_ptr == NULL)
+		exit_msg(STDERR_FILENO, "could not init graphics\n");
 	return (0);
 }

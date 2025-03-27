@@ -14,7 +14,17 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
+# include "../include/minilibx/mlx.h"
 
-void	exit_msg(int status, char *fmt, ...);
+typedef enum e_fractol_set
+{
+	SET_MANDELBROT,
+	SET_JULIA,
+	SET_UNKNOWN,
+}				t_fractol_set;
+
+void			exit_msg(int status, char *fmt, ...);
+void			exit_usage(void);
+t_fractol_set	parse_selected_set(int argc, char *argv[]);
 
 #endif

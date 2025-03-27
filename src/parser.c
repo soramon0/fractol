@@ -11,3 +11,19 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	exit_usage(void)
+{
+	ft_printf_fd(STDERR_FILENO, "usage:\n");
+	ft_printf_fd(STDERR_FILENO, "\tfractol mandelbrot\n");
+	exit_msg(EXIT_FAILURE, "\tfractol julia <real> <i>\n");
+}
+
+t_fractol_set	parse_selected_set(int argc, char *argv[])
+{
+	if (argc == 2 && ft_strcmp(argv[1], "mandelbrot"))
+		return (SET_MANDELBROT);
+	if (argc == 4 && ft_strcmp(argv[1], "julia"))
+		return (SET_JULIA);
+	return (SET_UNKNOWN);
+}

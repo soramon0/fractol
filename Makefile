@@ -1,5 +1,5 @@
-CC = cc
-EXTRA_FLAGS= -g
+CC = gcc
+EXTRA_FLAGS= -g -Linclude/minilibx -lmlx_Linux -lX11 -lXext
 CFLAGS = -Wall -Wextra -Werror $(EXTRA_FLAGS)
 NAME = fractol
 SRC = main.c $(shell find ./src -depth -maxdepth 1 -type f -name "*.c")
