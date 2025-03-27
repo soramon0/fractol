@@ -15,6 +15,13 @@
 
 # include "libft/libft.h"
 # include "mlx.h"
+# include <X11/Xutil.h>
+
+typedef struct s_mlx_data
+{
+	void		*mlx;
+	void		*win;
+}				t_mlx_data;
 
 typedef enum e_fractol_set
 {
