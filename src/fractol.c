@@ -32,7 +32,7 @@ void	update_fractol_pixel(t_mlx_data *d, int x, int y)
 		if ((z.x * z.x) + (z.y * z.y) > 4)
 		{
 			color = map_color(max_iter, i);
-			update_img_pixel(d->screen, x, y, map_color(max_iter, i));
+			update_img_pixel(d->screen, x, y, color);
 			return ;
 		}
 		i++;

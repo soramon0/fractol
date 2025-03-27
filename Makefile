@@ -14,7 +14,7 @@ libft: $(LIBFT_NAME)
 mlx: $(LIB_MLX)
 
 $(NAME): $(LIB_MLX) $(LIBFT_NAME) $(OBJ)
-	$(CC) $(CFLAGS) $(LINKS) $(OBJ) $(LIB_MLX) $(LIBFT_NAME) -o $(NAME)
+	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB_MLX) $(LIBFT_NAME) $(LINKS)
 
 $(LIBFT_NAME):
 	$(MAKE) -C ./src/libft

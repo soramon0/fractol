@@ -14,9 +14,6 @@
 
 int	handle_input(int keysym, t_mlx_data *data)
 {
-	int	r;
-
-	r = 0;
 	if (keysym == XK_Escape)
 	{
 		mlx_data_free(data);
