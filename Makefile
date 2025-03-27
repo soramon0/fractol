@@ -4,7 +4,7 @@ NAME = fractol
 SRC = main.c $(shell find ./src -depth -maxdepth 1 -type f -name "*.c")
 OBJ = $(SRC:.c=.o)
 LIBFT_NAME = src/libft/libft.a
-LIB_MLX = src/mlx/libmlx.a
+LIB_MLX = include/mlx/libmlx.a
 LINKS = -lm -lz -lXext -lX11
 
 all: $(NAME)
@@ -20,11 +20,11 @@ $(LIBFT_NAME):
 	$(MAKE) -C ./src/libft
 
 $(LIB_MLX):
-	$(MAKE) -C ./src/mlx
+	$(MAKE) -C ./include/mlx
 
 clean:
 	$(MAKE) -C src/libft clean
-	$(MAKE) -C src/mlx clean
+	$(MAKE) -C include/mlx clean
 	rm -f $(OBJ)
 
 fclean: clean
