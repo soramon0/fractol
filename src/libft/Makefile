@@ -1,16 +1,13 @@
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 SRCS = $(shell find . -type f -name "*.c")
 OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(OBJS)
-
 all: $(NAME)
 
-%.o: %.c
-	$(CC) -c $(FLAGS) $< -o $@
-	ar rcs $(NAME) $@
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	rm -rf $(OBJS)
