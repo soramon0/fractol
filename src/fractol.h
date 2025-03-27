@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
-# include "../include/minilibx/mlx.h"
+# include "mlx/mlx.h"
 
 typedef enum e_fractol_set
 {

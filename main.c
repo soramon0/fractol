@@ -15,13 +15,13 @@
 int	main(int argc, char *argv[])
 {
 	t_fractol_set	set;
-	// void			*mlx_ptr;
+	void			*mlx_ptr;
 
 	set = parse_selected_set(argc, argv);
 	if (set == SET_UNKNOWN)
 		exit_usage();
-	// mlx_ptr = mlx_init();
-	// if (mlx_ptr == NULL)
-	// 	exit_msg(STDERR_FILENO, "could not init graphics\n");
+	mlx_ptr = mlx_init();
+	if (mlx_ptr == NULL)
+		exit_msg(STDERR_FILENO, "could not init graphics\n");
 	return (0);
 }
