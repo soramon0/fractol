@@ -26,6 +26,6 @@ typedef enum e_fractol_set
 void			exit_msg(int status, char *fmt, ...);
 void			exit_usage(void);
 t_fractol_set	parse_selected_set(int argc, char *argv[]);
-char *fractol_set_str(t_fractol_set set);
+char			*fractol_set_str(t_fractol_set set);
 
 #endif

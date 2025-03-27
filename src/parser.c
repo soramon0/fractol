@@ -19,11 +19,11 @@ void	exit_usage(void)
 	exit_msg(EXIT_FAILURE, "\tfractol julia <real> <i>\n");
 }
 
-char *fractol_set_str(t_fractol_set set)
+char	*fractol_set_str(t_fractol_set set)
 {
-	static char *str = "unknown";
+	static char	*str = "unknown";
 
-	if (set < 0 ||  set >= SET_UNKNOWN)
+	if (set < 0 || set >= SET_UNKNOWN)
 		return (NULL);
 	if (set == SET_MANDELBROT)
 		str = "mandelbrot";
@@ -40,4 +40,3 @@ t_fractol_set	parse_selected_set(int argc, char *argv[])
 		return (SET_JULIA);
 	return (SET_UNKNOWN);
 }
-
