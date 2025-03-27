@@ -23,5 +23,9 @@ int	main(int argc, char *argv[])
 	mlx_ptr = mlx_init();
 	if (mlx_ptr == NULL)
 		exit_msg(STDERR_FILENO, "could not init graphics\n");
+	void *window = mlx_new_window(mlx_ptr, 400, 300, "Hello World");
+	if (window == NULL)
+		exit_msg(STDERR_FILENO, "could not create window\n");
+	while (1){}
 	return (0);
 }

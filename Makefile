@@ -13,7 +13,7 @@ libft: $(LIBFT_NAME)
 
 mlx: $(LIB_MLX)
 
-$(NAME): $(LIBFT_NAME) $(OBJ)
+$(NAME): $(LIB_MLX) $(LIBFT_NAME) $(OBJ)
 	$(CC) $(CFLAGS) $(LINKS) $(OBJ) $(LIB_MLX) $(LIBFT_NAME) -o $(NAME)
 
 $(LIBFT_NAME):
