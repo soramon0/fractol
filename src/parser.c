@@ -12,13 +12,6 @@
 
 #include "fractol.h"
 
-void	exit_usage(void)
-{
-	ft_printf_fd(STDERR_FILENO, "usage:\n");
-	ft_printf_fd(STDERR_FILENO, "\tfractol mandelbrot\n");
-	exit_msg(EXIT_FAILURE, "\tfractol julia <real> <i>\n");
-}
-
 char	*fractol_set_str(t_fractol_set set)
 {
 	static char	*str = "unknown";
@@ -32,8 +25,19 @@ char	*fractol_set_str(t_fractol_set set)
 	return (str);
 }
 
+t_fractol_set	fractol_set(char *set)
+{
+	if (ft_strcmp(set, fractol_set_str(SET_MANDELBROT)))
+		return (SET_MANDELBROT);
+	if (ft_strcmp(set, fractol_set_str(SET_JULIA)))
+		return (SET_JULIA);
+	return (SET_UNKNOWN);
+}
+
 t_fractol_set	parse_selected_set(int argc, char *argv[])
 {
+	if (argc < 2 || argc > 4)
+		return (SET_UNKNOWN);
 	if (argc == 2 && ft_strcmp(argv[1], fractol_set_str(SET_MANDELBROT)))
 		return (SET_MANDELBROT);
 	if (argc == 4 && ft_strcmp(argv[1], fractol_set_str(SET_JULIA)))

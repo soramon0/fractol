@@ -43,23 +43,22 @@ t_mlx_data	*mlx_data_create(char *title, int width, int height)
 	data = malloc(sizeof(t_mlx_data));
 	if (data == NULL)
 		return (NULL);
+	data->fractol_set = fractol_set(title);
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
+		return (mlx_data_free(data), exit_err("mlx_init failed\n"), NULL);
+	data->win_w = width;
+	data->win_h = height;
+	if (data->win_w <= 100 || data->win_h <= 100)
 	{
-		mlx_data_free(data);
-		exit_msg(STDERR_FILENO, "could not init mlx\n");
+		width = 800;
+		height = 800;
 	}
-	data->win = mlx_new_window(data->mlx, width, height, title);
+	data->win = mlx_new_window(data->mlx, data->win_w, data->win_h, title);
 	if (data->win == NULL)
-	{
-		mlx_data_free(data);
-		exit_msg(STDERR_FILENO, "could not create window\n");
-	}
+		return (mlx_data_free(data), exit_err("window create failed\n"), NULL);
 	data->screen = img_create(data);
 	if (data->screen == NULL)
-	{
-		mlx_data_free(data);
-		exit_msg(STDERR_FILENO, "could not create img\n");
-	}
+		return (mlx_data_free(data), exit_err("img create failed\n"), NULL);
 	return (data);
 }

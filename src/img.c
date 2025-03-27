@@ -28,7 +28,7 @@ t_img	*img_create(t_mlx_data *data)
 	img = malloc(sizeof(t_img));
 	if (img == NULL)
 		return (NULL);
-	img->src = mlx_new_image(data->mlx, WIN_W, WIN_H);
+	img->src = mlx_new_image(data->mlx, data->win_w, data->win_h);
 	if (img->src == NULL)
 		return (free(img), NULL);
 	img->pixels = mlx_get_data_addr(img->src, &img->bits_per_pixel,
@@ -49,4 +49,16 @@ void	update_img_pixel(t_img *img, int x, int y, int color)
 
 	offset = (img->size_len * y) + (x * (img->bits_per_pixel / 8));
 	*((unsigned int *)(offset + img->pixels)) = color;
+}
+
+double	map_color(double max_iter, double iter)
+{
+	double	min[2];
+	double	max[2];
+
+	min[0] = 0;
+	min[1] = encode_rgb(0, 0, 0);
+	max[0] = max_iter;
+	max[1] = encode_rgb(255, 255, 255);
+	return (map_num(iter, min, max));
 }
