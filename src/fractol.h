@@ -14,8 +14,8 @@
 # define FRACTOL_H
 
 # include "libft/libft.h"
+# include "../include/mlx.h"
 # include <X11/Xutil.h>
-# include <mlx.h>
 
 # define WIN_W 500
 # define WIN_H 500
