@@ -25,19 +25,19 @@ void	update_fractol_pixel(t_mlx_data *d, int x, int y)
 	c.x = map_x(d, x);
 	c.y = map_y(d, y);
 	i = 0;
-	max_iter = 100;
+	max_iter = 42;
 	while (i < max_iter)
 	{
 		z = sum_complex(sequre_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > 4)
 		{
-			color = map_color(max_iter, i);
+			color = map_color(max_iter, i, 255);
 			update_img_pixel(d->screen, x, y, color);
 			return ;
 		}
 		i++;
 	}
-	update_img_pixel(d->screen, x, y, encode_rgb(255, 255, 255));
+	update_img_pixel(d->screen, x, y, encode_rgba(0, 0, 0, 255));
 }
 
 int	fractol_render(t_mlx_data *d)

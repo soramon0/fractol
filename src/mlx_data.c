@@ -51,8 +51,8 @@ t_mlx_data	*mlx_data_create(char *title, int width, int height)
 	data->win_h = height;
 	if (data->win_w <= 100 || data->win_h <= 100)
 	{
-		width = 800;
-		height = 800;
+		width = 400;
+		height = 400;
 	}
 	data->win = mlx_new_window(data->mlx, data->win_w, data->win_h, title);
 	if (data->win == NULL)

@@ -38,9 +38,10 @@ t_img	*img_create(t_mlx_data *data)
 	return (img);
 }
 
-int	encode_rgb(unsigned char red, unsigned char green, unsigned char blue)
+int	encode_rgba(unsigned char red, unsigned char green, unsigned char blue,
+		unsigned char alpha)
 {
-	return (red << 16 | green << 8 | blue);
+	return (alpha << 24 | red << 16 | green << 8 | blue);
 }
 
 void	update_img_pixel(t_img *img, int x, int y, int color)
@@ -51,14 +52,14 @@ void	update_img_pixel(t_img *img, int x, int y, int color)
 	*((unsigned int *)(offset + img->pixels)) = color;
 }
 
-double	map_color(double max_iter, double iter)
+double	map_color(double max_iter, double iter, unsigned char alpha)
 {
 	double	min[2];
 	double	max[2];
 
 	min[0] = 0;
-	min[1] = encode_rgb(0, 0, 0);
+	min[1] = encode_rgba(0, 0, 0, 255);
 	max[0] = max_iter;
-	max[1] = encode_rgb(255, 255, 255);
+	max[1] = encode_rgba(255, 255, 255, alpha);
 	return (map_num(iter, min, max));
 }

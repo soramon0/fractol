@@ -17,8 +17,8 @@
 # include "libft/libft.h"
 # include <X11/Xutil.h>
 
-# define WIN_W 800
-# define WIN_H 800
+# define WIN_W 400
+# define WIN_H 400
 
 typedef enum e_fractol_set
 {
@@ -65,12 +65,13 @@ void				mlx_data_free(t_mlx_data *data);
 t_img				*img_create(t_mlx_data *data);
 void				img_free(void *mlx, t_img *img);
 void				update_img_pixel(t_img *img, int x, int y, int color);
-int					encode_rgb(unsigned char red, unsigned char green,
-						unsigned char blue);
+int					encode_rgba(unsigned char red, unsigned char green,
+						unsigned char blue, unsigned char alpha);
+double				map_color(double max_iter, double iter,
+						unsigned char alpha);
 double				map_num(double num, double min[2], double max[2]);
 double				map_x(t_mlx_data *d, double x);
 double				map_y(t_mlx_data *d, double y);
-double				map_color(double max_iter, double iter);
 t_complex			sum_complex(t_complex z1, t_complex z2);
 t_complex			sequre_complex(t_complex z);
 
