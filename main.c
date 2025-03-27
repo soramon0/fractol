@@ -12,26 +12,6 @@
 
 #include "src/fractol.h"
 
-void	mlx_data_free(t_mlx_data *data)
-{
-	if (data->mlx)
-	{
-		if (data->win)
-		{
-			mlx_destroy_window(data->mlx, data->win);
-			data->win = NULL;
-		}
-		if (data->screen)
-		{
-			img_free(data->mlx, data->screen);
-			data->screen = NULL;
-		}
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-		data->mlx = NULL;
-	}
-}
-
 int	color_screen(t_mlx_data *data, int color)
 {
 	int	x;
@@ -74,28 +54,15 @@ int	handle_input(int keysym, t_mlx_data *data)
 int	main(int argc, char *argv[])
 {
 	t_fractol_set	set;
-	t_mlx_data		data;
+	t_mlx_data		*data;
 
-	data = (t_mlx_data){NULL, NULL, NULL};
 	set = parse_selected_set(argc, argv);
 	if (set == SET_UNKNOWN)
 		exit_usage();
-	data.mlx = mlx_init();
-	if (data.mlx == NULL)
-		exit_msg(STDERR_FILENO, "could not init mlx\n");
-	data.win = mlx_new_window(data.mlx, WIN_W, WIN_H, fractol_set_str(set));
-	if (data.win == NULL)
-	{
-		mlx_data_free(&data);
-		exit_msg(STDERR_FILENO, "could not create window\n");
-	}
-	data.screen = img_create(&data);
-	if (data.screen == NULL)
-	{
-		mlx_data_free(&data);
-		exit_msg(STDERR_FILENO, "could not create img\n");
-	}
-	mlx_key_hook(data.win, handle_input, &data);
-	mlx_loop(data.mlx);
-	return (mlx_data_free(&data), EXIT_SUCCESS);
+	data = mlx_data_create(fractol_set_str(set), WIN_W, WIN_H);
+	if (data == NULL)
+		return (EXIT_FAILURE);
+	mlx_key_hook(data->win, handle_input, data);
+	mlx_loop(data->mlx);
+	return (mlx_data_free(data), EXIT_SUCCESS);
 }

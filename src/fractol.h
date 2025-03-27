@@ -48,6 +48,8 @@ void			exit_usage(void);
 t_fractol_set	parse_selected_set(int argc, char *argv[]);
 char			*fractol_set_str(t_fractol_set set);
 
+t_mlx_data		*mlx_data_create(char *title, int width, int height);
+void			mlx_data_free(t_mlx_data *data);
 t_img			*img_create(t_mlx_data *data);
 void			img_free(void *mlx, t_img *img);
 void			update_img_pixel(t_img *img, int x, int y, int color);
