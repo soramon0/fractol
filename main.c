@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "src/fractol.h"
+#include <stdio.h>
 
 int	handle_events(int keysym, t_mlx_data *data)
 {
@@ -55,11 +56,17 @@ int	main(int argc, char *argv[])
 {
 	t_fractol_set	set;
 	t_mlx_data		*data;
+	double			input[2];
 
 	set = parse_selected_set(argc, argv);
 	if (set == SET_UNKNOWN)
 		exit_usage();
-	data = mlx_data_create(fractol_set_str(set), WIN_W, WIN_H);
+	if (set == SET_JULIA)
+	{
+		if (ft_atod(argv[2], input) != 0 || ft_atod(argv[3], input + 1) != 0)
+			return (exit_err("input is not a valid float\n"), EXIT_FAILURE);
+	}
+	data = mlx_data_create(fractol_set_str(set), WIN_W, WIN_H, input);
 	if (data == NULL)
 		return (EXIT_FAILURE);
 	fractol_render(data);

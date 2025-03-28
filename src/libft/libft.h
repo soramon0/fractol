@@ -13,6 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <limits.h>
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdint.h>
@@ -29,7 +30,9 @@
 # endif
 
 int		ft_atoi(const char *nptr, int *valid);
+int		ft_atod(const char *nptr, double *num);
 int		ft_isdigit(int c);
+int		ft_isspace(char c);
 size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
