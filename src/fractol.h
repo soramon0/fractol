@@ -17,8 +17,8 @@
 # include "libft/libft.h"
 # include <X11/Xutil.h>
 
-# define WIN_W 400
-# define WIN_H 400
+# define WIN_W 600
+# define WIN_H 600
 
 typedef enum e_fractol_set
 {
@@ -49,6 +49,9 @@ typedef struct s_mlx_data
 	t_img			*screen;
 	int				win_w;
 	int				win_h;
+	double			move_x;
+	double			move_y;
+	double			zoom;
 	t_fractol_set	fractol_set;
 }					t_mlx_data;
 

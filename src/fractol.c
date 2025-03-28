@@ -22,8 +22,8 @@ void	update_fractol_pixel(t_mlx_data *d, int x, int y)
 
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = map_x(d, x);
-	c.y = map_y(d, y);
+	c.x = (map_x(d, x) * d->zoom) + d->move_x;
+	c.y = (map_y(d, y) * d->zoom) + d->move_y;
 	i = 0;
 	max_iter = 42;
 	while (i < max_iter)

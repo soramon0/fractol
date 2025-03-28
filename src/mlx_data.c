@@ -36,6 +36,18 @@ void	mlx_data_free(t_mlx_data *data)
 	}
 }
 
+void	init_state(t_mlx_data *data)
+{
+	if (data->win_w <= 100 || data->win_h <= 100)
+	{
+		data->win_w = 400;
+		data->win_h = 400;
+	}
+	data->move_x = 0.0;
+	data->move_y = 0.0;
+	data->zoom = 1;
+}
+
 t_mlx_data	*mlx_data_create(char *title, int width, int height)
 {
 	t_mlx_data	*data;
@@ -49,11 +61,7 @@ t_mlx_data	*mlx_data_create(char *title, int width, int height)
 		return (mlx_data_free(data), exit_err("mlx_init failed\n"), NULL);
 	data->win_w = width;
 	data->win_h = height;
-	if (data->win_w <= 100 || data->win_h <= 100)
-	{
-		width = 400;
-		height = 400;
-	}
+	init_state(data);
 	data->win = mlx_new_window(data->mlx, data->win_w, data->win_h, title);
 	if (data->win == NULL)
 		return (mlx_data_free(data), exit_err("window create failed\n"), NULL);
