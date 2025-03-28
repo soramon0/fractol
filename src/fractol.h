@@ -13,8 +13,8 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../include/mlx/mlx.h"
 # include "libft/libft.h"
+# include "mlx.h"
 # include <X11/Xutil.h>
 
 # define WIN_W 600

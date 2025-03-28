@@ -1,30 +1,26 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = fractol
-SRC = main.c $(shell find ./src -depth -maxdepth 1 -type f -name "*.c")
+SRC = main.c ./src/parser.c ./src/utils.c ./src/fractol.c ./src/img.c ./src/mlx_data.c ./src/math.c
 OBJ = $(SRC:.c=.o)
 LIBFT_NAME = src/libft/libft.a
-LIB_MLX = include/mlx/libmlx.a
-LINKS = -lm -lz -lXext -lX11
+LINKS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 all: $(NAME)
 
 libft: $(LIBFT_NAME)
 
-mlx: $(LIB_MLX)
+%.o: %.c
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
-$(NAME): $(LIB_MLX) $(LIBFT_NAME) $(OBJ)
-	$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LIB_MLX) $(LIBFT_NAME) $(LINKS)
+$(NAME): $(LIBFT_NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_NAME) $(LINKS) -o $(NAME)
 
 $(LIBFT_NAME):
 	$(MAKE) -C ./src/libft
 
-$(LIB_MLX):
-	$(MAKE) -C ./include/mlx
-
 clean:
 	$(MAKE) -C src/libft clean
-	$(MAKE) -C include/mlx clean
 	rm -f $(OBJ)
 
 fclean: clean
