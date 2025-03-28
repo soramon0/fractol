@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "src/fractol.h"
-#include <stdio.h>
 
 int	handle_events(int keysym, t_mlx_data *data)
 {

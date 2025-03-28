@@ -41,15 +41,11 @@ static int	parse_integer_part(char **nptr, int *r, int *s)
 
 static void	parse_decimal_part(const char **nptr, double *d, double *pow)
 {
-	int	decimal_digits;
-
-	decimal_digits = 0;
-	while (ft_isdigit(**nptr) && decimal_digits < 15)
+	while (ft_isdigit(**nptr))
 	{
 		*pow *= 0.1;
 		*d += (**nptr - '0') * (*pow);
 		(*nptr)++;
-		decimal_digits++;
 	}
 }
 
